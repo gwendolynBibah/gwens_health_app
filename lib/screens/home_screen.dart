@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:health_app/colors.dart';
 import 'package:health_app/screens/bmi.dart';
+import 'package:health_app/screens/navbarWeight.dart';
+import 'package:health_app/screens/nutritionNav.dart';
 import 'package:health_app/screens/sleep.dart';
 import 'package:health_app/screens/steps.dart';
 import 'package:health_app/size.dart';
@@ -104,7 +106,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         pageCategories(
                           title: "Nutrition",
                           boxColor: orange,
-                          press: () {},
+                          press: () {
+                            Navigator.push(context, 
+                            MaterialPageRoute(builder: (context)=>NutritionNav()));
+                          },
                           categoryIcon: Icon(
                                 Icons.fastfood,
                                 color: Colors.teal[900],
@@ -117,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.push(
                               context, 
                               MaterialPageRoute(
-                                builder: (context) => bmi_page()));
+                                builder: (context) => weightNavbar()));
                           },
                           categoryIcon: Icon(
                                 Icons.scale,

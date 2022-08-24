@@ -36,8 +36,9 @@ class _PedometerState extends State<Pedometer> {
                     percent: .12,
                     animation: true,
                     animateFromLastPercent: true,
+                    animationDuration: 2000,
                     lineWidth: 15.0,
-                    progressColor: orange,
+                    progressColor: peach,
                     footer: Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Text(

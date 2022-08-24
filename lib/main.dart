@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Email And Password Login',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
-        fontFamily: "Poppins"
+        //fontFamily: "Poppins"
       ),
       home: Onboarding_Screen(),
       debugShowCheckedModeBanner: false,
