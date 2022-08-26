@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_app/colors.dart';
-import 'package:health_app/screens/weighttracker.dart';
+import 'package:health_app/screens/weightTracker.dart';
 import 'home_screen.dart';
 import 'bmi.dart';
 import 'statistics.dart';
@@ -28,6 +28,8 @@ class _weightNavbarState extends State<weightNavbar> {
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,15 +47,7 @@ class _weightNavbarState extends State<weightNavbar> {
         onTap: _onItemSelect,
         ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: peach,
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 40,
-        )
-      ),
+      
     );
   }
 }
