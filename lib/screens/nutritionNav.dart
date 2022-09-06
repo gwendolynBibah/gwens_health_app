@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'calorieCounter.dart';
 import 'mealplanner.dart';
+import 'meal_planner.dart';
 
 class NutritionNav extends StatefulWidget {
   const NutritionNav({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _NutritionNavState extends State<NutritionNav> {
 
   final List<Widget> _destinations = <Widget>[
       Counter(),
-      Planner()
+      MealPlanner()
   ];
 
   void _onItemSelect(int index) {

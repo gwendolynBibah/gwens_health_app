@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+
+
 import 'package:flutter/material.dart';
 import 'package:health_app/colors.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -12,7 +14,59 @@ class Counter extends StatefulWidget {
   State<Counter> createState() => _CounterState();
 }
 
+
+  
+
 class _CounterState extends State<Counter> {
+
+  //Text Editing controller for the pop up box
+  final calorieController = TextEditingController();
+
+  //for the add weight button
+  void taskInputDialog(TextEditingController funcController, VoidCallback buttonFunct) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (context, setState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              title: Center(
+                child: Text(
+                  "Add Weight",
+                ),
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  TextField(
+                    controller: funcController,
+                    autofocus: true,
+                    keyboardType: TextInputType.number,
+                    // decoration: InputDecoration(
+                    //   errorText: txtValidate ? null : errTxt
+                    // ),                   
+                    ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Center(
+                        child: ElevatedButton(
+                            onPressed: buttonFunct,
+                            child: Text("Add")),
+                      )
+                    ],
+                  )
+                ],
+              ));
+            });
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +75,15 @@ class _CounterState extends State<Counter> {
         title: Text("Calorie Counter"),
         centerTitle: true,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (() => taskInputDialog(calorieController, (){} )),
+        backgroundColor: peach,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 35
+          ),
+        ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -52,22 +115,26 @@ class _CounterState extends State<Counter> {
                   ),
                   ),
               ),
-              SizedBox(height: 30.0),
-              Row(
-                children: [
-                  nutrientPercentage(
-                    percentage: .26,
-                    nutrient: "Fat",
-                  ),
-                //  SizedBox(height: 10),
-                  nutrientPercentage(
-                    nutrient: "carbs", 
-                    percentage: .24),
-                    // SizedBox(height: 10),
-                  nutrientPercentage(
-                    nutrient: "Protein", 
-                    percentage: .76)
-                ],
+              SizedBox(height: 20.0),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    nutrientPercentage(
+                      percentage: .26,
+                      nutrient: "Fat",
+                    ),
+                  //  SizedBox(height: 10),
+                    nutrientPercentage(
+                      nutrient: "carbs", 
+                      percentage: .24),
+                      // SizedBox(height: 10),
+                    nutrientPercentage(
+                      nutrient: "Protein", 
+                      percentage: .76)
+                  ],
+                ),
               )
         
             ],
@@ -92,13 +159,6 @@ class nutrientPercentage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.red
-        )
-      ),
-      height: 50,
-      width: 110,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,21 +171,29 @@ class nutrientPercentage extends StatelessWidget {
                 fontSize: 17.0,
                 color: Colors.grey,
                 fontWeight: FontWeight.w600
-          
               ),
               ),
           ),
           SizedBox(height: 5.0),
-          LinearPercentIndicator(
-            progressColor: peach,
-            animation: true,
-            animationDuration: 2000,
-            animateFromLastPercent: true,
-            barRadius: Radius.circular(80),
-            percent: percentage,
-            lineHeight: 8,
-            width: MediaQuery.of(context).size.width *.25,
-            
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              LinearPercentIndicator(
+                progressColor: peach,
+                animation: true,
+                animationDuration: 2000,
+                animateFromLastPercent: true,
+                barRadius: Radius.circular(80),
+                percent: percentage,
+                lineHeight: 8,
+                width: MediaQuery.of(context).size.width *.75,
+              ),
+              Icon(
+                Icons.add,
+                color: Colors.grey,
+                size: 25,
+                )
+            ],
           ),
         ],
       ),

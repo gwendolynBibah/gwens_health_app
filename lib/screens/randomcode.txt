@@ -1,0 +1,41 @@
+showDialog(
+              context: context, 
+              builder: (context) {
+                return StatefulBuilder(
+                  builder: (context, setState) {
+            return AlertDialog(
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15)),
+    title: Center(
+      child: Text(
+        "Add Meal",
+      ),
+    ),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        TextField(
+          controller: funcController,
+          autofocus: true,
+          // decoration: InputDecoration(
+          //   errorText: txtValidate ? null : errTxt
+          // ),                   
+          ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Add")),
+            )
+          ],
+        )
+      ],
+    ));
+              });
+              });
+          },
